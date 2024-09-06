@@ -1,0 +1,38 @@
+/* source/css/custom.css */
+
+#search-box {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    padding: 20px 0; /* 上下内边距 */
+  }
+  
+  #search-box form {
+    display: flex;
+    width: 75%; /* 占页面宽度的四分之三 */
+    max-width: 800px; /* 可选：限制最大宽度 */
+  }
+  
+  #search-box input[type="text"] {
+    flex: 1; /* 占满父元素宽度 */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 25px; /* 圆角效果 */
+    background-color: transparent; /* 背景透明 */
+    font-size: 16px;
+  }
+  
+  #search-box button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 25px; /* 圆角效果 */
+    background-color: #007bff; /* 背景颜色 */
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center; /* 垂直居中 */
+  }
+  
+  #search-box button i {
+    margin-right: 5px; /* 图标与文本之间的间距 */
+  }
+  
