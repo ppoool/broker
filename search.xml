@@ -8,7 +8,7 @@
       <link href="/2024/09/06/game/"/>
       <url>/2024/09/06/game/</url>
       
-        <content type="html"><![CDATA[<h3 id="Bug-fix"><a href="#Bug-fix" class="headerlink" title="Bug fix"></a>Bug fix</h3><ol><li>在 选项 -&gt; 关于 中添加了版本更新检测</li><li>延长了更新修改器检测频率以降低人机验证弹窗出现概率</li><li>修复了个别修改器不停更新的问题</li></ol><p><img src="https://s2.loli.net/2024/09/06/iYOAq32U8EW4nGg.png" alt="描述"></p>]]></content>
+        <content type="html"><![CDATA[<h3 id="Bug-fix"><a href="#Bug-fix" class="headerlink" title="Bug fix"></a>Bug fix</h3><ol><li>在 选项 -&gt; 关于 中添加了版本更新检测</li><li>延长了更新修改器检测频率以降低人机验证弹窗出现概率</li><li>修复了个别修改器不停更新的问题</li><li>可以修改黑神话悟空</li></ol><p><img src="https://s2.loli.net/2024/09/06/iYOAq32U8EW4nGg.png" alt="描述"></p><h3 id="点我下载"><a href="#点我下载" class="headerlink" title="点我下载"></a><a href="https://github.com/dyang886/Game-Cheats-Manager/releases/download/v2.1.2/Game.Cheats.Manager.Setup.2.1.2.exe">点我下载</a></h3>]]></content>
       
       
       
@@ -21,7 +21,7 @@
       <link href="/2024/09/06/wx/"/>
       <url>/2024/09/06/wx/</url>
       
-        <content type="html"><![CDATA[<h1 id="微信防撤回及微信多开"><a href="#微信防撤回及微信多开" class="headerlink" title="微信防撤回及微信多开"></a>微信防撤回及微信多开</h1><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ol><li>QQ防撤回需要依赖原本解压后的安装包</li><li>两个版本的功能都可以一起安装</li><li>微信安装完防撤回可以删除原本解压后安装包</li></ol><h3 id="点我下载"><a href="#点我下载" class="headerlink" title="点我下载"></a><a href="https://github.com/huiyadanli/RevokeMsgPatcher/releases/download/1.8/RevokeMsgPatcher.v1.8.1.zip">点我下载</a></h3>]]></content>
+        <content type="html"><![CDATA[<h1 id="微信防撤回及微信多开"><a href="#微信防撤回及微信多开" class="headerlink" title="微信防撤回及微信多开"></a>微信防撤回及微信多开</h1><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ol><li>QQ防撤回需要依赖原本解压后的安装包</li><li>两个版本的功能都可以一起安装</li><li>微信安装完防撤回可以删除原本解压后安装包</li></ol><h3 id="点我下载"><a href="#点我下载" class="headerlink" title="点我下载"></a><a href="https://geyueshi.com/ziyuan/sss/wx.zip">点我下载</a></h3>]]></content>
       
       
       
@@ -117,17 +117,6 @@
     
     
     <entry>
-      <title>链接</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>categories</title>
       <link href="/categories/index.html"/>
       <url>/categories/index.html</url>
@@ -150,22 +139,22 @@
     
     
     <entry>
-      <title>电影</title>
-      <link href="/movies/index.html"/>
-      <url>/movies/index.html</url>
+      <title></title>
+      <link href="/css/custom.css"/>
+      <url>/css/custom.css</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[/* source/css/custom.css */#search-box {    display: flex;    justify-content: center; /* 水平居中 */    padding: 20px 0; /* 上下内边距 */  }    #search-box form {    display: flex;    width: 75%; /* 占页面宽度的四分之三 */    max-width: 800px; /* 可选：限制最大宽度 */  }    #search-box input[type="text"] {    flex: 1; /* 占满父元素宽度 */    padding: 10px;    border: 1px solid #ccc;    border-radius: 25px; /* 圆角效果 */    background-color: transparent; /* 背景透明 */    font-size: 16px;  }    #search-box button {    padding: 10px 15px;    border: none;    border-radius: 25px; /* 圆角效果 */    background-color: #007bff; /* 背景颜色 */    color: white;    cursor: pointer;    display: flex;    align-items: center; /* 垂直居中 */  }    #search-box button i {    margin-right: 5px; /* 图标与文本之间的间距 */  }  ]]></content>
       
     </entry>
     
     
     
     <entry>
-      <title></title>
-      <link href="/css/custom.css"/>
-      <url>/css/custom.css</url>
+      <title>链接</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
       
-        <content type="html"><![CDATA[/* source/css/custom.css */#search-box {    display: flex;    justify-content: center; /* 水平居中 */    padding: 20px 0; /* 上下内边距 */  }    #search-box form {    display: flex;    width: 75%; /* 占页面宽度的四分之三 */    max-width: 800px; /* 可选：限制最大宽度 */  }    #search-box input[type="text"] {    flex: 1; /* 占满父元素宽度 */    padding: 10px;    border: 1px solid #ccc;    border-radius: 25px; /* 圆角效果 */    background-color: transparent; /* 背景透明 */    font-size: 16px;  }    #search-box button {    padding: 10px 15px;    border: none;    border-radius: 25px; /* 圆角效果 */    background-color: #007bff; /* 背景颜色 */    color: white;    cursor: pointer;    display: flex;    align-items: center; /* 垂直居中 */  }    #search-box button i {    margin-right: 5px; /* 图标与文本之间的间距 */  }  ]]></content>
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
@@ -186,6 +175,17 @@
       <title>标签</title>
       <link href="/tags/index.html"/>
       <url>/tags/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>电影</title>
+      <link href="/movies/index.html"/>
+      <url>/movies/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
