@@ -15,8 +15,8 @@
   #search-box input[type="text"] {
     flex: 1; /* 占满父元素宽度 */
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 25px; /* 圆角效果 */
+    border: 1px solid #ff6565;
+    border-radius: 50px; /* 圆角效果 */
     background-color: transparent; /* 背景透明 */
     font-size: 16px;
   }
@@ -24,7 +24,7 @@
   #search-box button {
     padding: 10px 15px;
     border: none;
-    border-radius: 25px; /* 圆角效果 */
+    border-radius: 50px; /* 圆角效果 */
     background-color: #007bff; /* 背景颜色 */
     color: white;
     cursor: pointer;
