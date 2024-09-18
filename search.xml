@@ -273,6 +273,31 @@
     
     
     <entry>
+      <title>flume配置</title>
+      <link href="/2024/09/08/flume1/"/>
+      <url>/2024/09/08/flume1/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Flume-配置文件和启动说明"><a href="#Flume-配置文件和启动说明" class="headerlink" title="Flume 配置文件和启动说明"></a>Flume 配置文件和启动说明</h1><h2 id="配置文件说明"><a href="#配置文件说明" class="headerlink" title="配置文件说明"></a>配置文件说明</h2><p>Flume 的配置文件用于定义 agent 的组件和它们之间的关系。以下是一个 Flume 配置文件的示例：<br>采集到kafka</p><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义 agent 的组件  </span></span><br><span class="line"><span class="attr">a1.sources</span> = <span class="string">s1  </span></span><br><span class="line"><span class="attr">a1.channels</span> = <span class="string">c1  </span></span><br><span class="line"><span class="attr">a1.sinks</span> = <span class="string">k1  </span></span><br><span class="line"><span class="comment">  </span></span><br><span class="line"><span class="comment"># 配置 source  </span></span><br><span class="line"><span class="attr">a1.sources.s1.type</span> = <span class="string">netcat  </span></span><br><span class="line"><span class="attr">a1.sources.s1.bind</span> = <span class="string">127.0.0.1  </span></span><br><span class="line"><span class="attr">a1.sources.s1.port</span> = <span class="string">44444  </span></span><br><span class="line"><span class="comment">  </span></span><br><span class="line"><span class="comment"># 配置 channel  </span></span><br><span class="line"><span class="attr">a1.channels.c1.type</span> = <span class="string">memory  </span></span><br><span class="line"><span class="attr">a1.channels.c1.capacity</span> = <span class="string">1000  </span></span><br><span class="line"><span class="attr">a1.channels.c1.transactionCapacity</span> = <span class="string">100  </span></span><br><span class="line"><span class="comment">  </span></span><br><span class="line"><span class="comment"># 配置 sink  </span></span><br><span class="line"><span class="attr">a1.sinks.k1.type</span> = <span class="string">org.apache.flume.sink.kafka.KafkaSink  </span></span><br><span class="line"><span class="attr">a1.sinks.k1.kafka.bootstrap.servers</span> = <span class="string">kafka1:9092,kafka2:9092,kafka3:9092  </span></span><br><span class="line"><span class="attr">a1.sinks.k1.kafka.topic</span> = <span class="string">mytopic  </span></span><br><span class="line"><span class="attr">a1.sinks.k1.flumeBatchSize</span> = <span class="string">20  </span></span><br><span class="line"><span class="attr">a1.sinks.k1.kafka.producer.acks</span> = <span class="string">all  </span></span><br><span class="line"><span class="comment">  </span></span><br><span class="line"><span class="comment"># 绑定 source, channel, 和 sink  </span></span><br><span class="line"><span class="attr">a1.sources.s1.channels</span> = <span class="string">c1  </span></span><br><span class="line"><span class="attr">a1.sinks.k1.channel</span> = <span class="string">c1</span></span><br></pre></td></tr></table></figure><h2 id="配置文件生成"><a href="#配置文件生成" class="headerlink" title="配置文件生成"></a>配置文件生成</h2><ol><li><p><strong>创建配置文件</strong></p><p>将上述配置内容保存为一个文件，例如 <code>flume.conf</code>。文件可以保存在任何目录下，但通常情况下会放在 Flume 的配置目录中。</p></li><li><p><strong>文件路径</strong></p><p>假设您将文件保存为 <code>/opt/flume/conf/flume.conf</code>，请根据实际情况调整路径。</p></li></ol><h2 id="启动-Flume-Agent"><a href="#启动-Flume-Agent" class="headerlink" title="启动 Flume Agent"></a>启动 Flume Agent</h2><p>使用以下命令启动 Flume Agent，并指定配置文件路径：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flume-ng agent --conf /opt/flume/conf --conf-file /opt/flume/conf/flume.conf --name a1</span><br></pre></td></tr></table></figure><ul><li><code>--conf</code> 指定 Flume 的配置目录。</li><li><code>--conf-file</code> 指定 Flume 配置文件的路径。</li><li><code>--name</code> 指定要启动的 Flume agent 的名称（在配置文件中定义的 agent 名称）。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> flume </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> flume </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hbase配置</title>
       <link href="/2024/09/08/Hbase/"/>
       <url>/2024/09/08/Hbase/</url>
@@ -298,6 +323,31 @@
     
     
     <entry>
+      <title>maxwell配置</title>
+      <link href="/2024/09/08/maxwell1/"/>
+      <url>/2024/09/08/maxwell1/</url>
+      
+        <content type="html"><![CDATA[<h1 id="初始化元数据库"><a href="#初始化元数据库" class="headerlink" title="初始化元数据库"></a>初始化元数据库</h1><h2 id="1-登录到-MySQL"><a href="#1-登录到-MySQL" class="headerlink" title="1. 登录到 MySQL"></a>1. 登录到 MySQL</h2><p>使用以下命令登录到 MySQL 数据库：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p123456</span><br></pre></td></tr></table></figure><h2 id="2-创建元数据库"><a href="#2-创建元数据库" class="headerlink" title="2. 创建元数据库"></a>2. 创建元数据库</h2><p>在 MySQL 提示符下，执行以下命令创建数据库 <code>maxwell</code>：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE maxwell;</span><br></pre></td></tr></table></figure><h2 id="3-创建用户并授予权限"><a href="#3-创建用户并授予权限" class="headerlink" title="3. 创建用户并授予权限"></a>3. 创建用户并授予权限</h2><p>创建一个名为 <code>maxwell</code> 的用户，并设置密码（请将 <code>your_password</code> 替换为实际的密码）：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&#x27;maxwell&#x27;</span>@<span class="string">&#x27;%&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;your_password&#x27;</span>;</span><br></pre></td></tr></table></figure><p>授予用户 <code>maxwell</code> 对 <code>maxwell</code> 数据库的所有权限：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> PRIVILEGES <span class="keyword">ON</span> maxwell.<span class="operator">*</span> <span class="keyword">TO</span> <span class="string">&#x27;maxwell&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure><h2 id="4-授予额外权限"><a href="#4-授予额外权限" class="headerlink" title="4. 授予额外权限"></a>4. 授予额外权限</h2><p>授予 <code>maxwell</code> 用户以下额外权限：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span>, REPLICATION SLAVE, REPLICATION CLIENT <span class="keyword">ON</span> <span class="operator">*</span>.<span class="operator">*</span> <span class="keyword">TO</span> <span class="string">&#x27;maxwell&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure><h2 id="5-刷新权限"><a href="#5-刷新权限" class="headerlink" title="5. 刷新权限"></a>5. 刷新权限</h2><p>执行以下命令以确保权限更改生效：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure><h2 id="6-具体Maxwell配置"><a href="#6-具体Maxwell配置" class="headerlink" title="6. 具体Maxwell配置"></a>6. 具体Maxwell配置</h2><h3 id="在maxwell安装目录根目录下配置"><a href="#在maxwell安装目录根目录下配置" class="headerlink" title="在maxwell安装目录根目录下配置"></a>在maxwell安装目录根目录下配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim config.properties.example</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> maxwell </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Maxwell </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Flink算子介绍（Process篇）</title>
       <link href="/2024/09/08/fink2/"/>
       <url>/2024/09/08/fink2/</url>
@@ -315,31 +365,6 @@
         <tags>
             
             <tag> flink </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>flume配置</title>
-      <link href="/2024/09/08/flume1/"/>
-      <url>/2024/09/08/flume1/</url>
-      
-        <content type="html"><![CDATA[<h1 id="Flume-配置文件和启动说明"><a href="#Flume-配置文件和启动说明" class="headerlink" title="Flume 配置文件和启动说明"></a>Flume 配置文件和启动说明</h1><h2 id="配置文件说明"><a href="#配置文件说明" class="headerlink" title="配置文件说明"></a>配置文件说明</h2><p>Flume 的配置文件用于定义 agent 的组件和它们之间的关系。以下是一个 Flume 配置文件的示例：<br>采集到kafka</p><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义 agent 的组件  </span></span><br><span class="line"><span class="attr">a1.sources</span> = <span class="string">s1  </span></span><br><span class="line"><span class="attr">a1.channels</span> = <span class="string">c1  </span></span><br><span class="line"><span class="attr">a1.sinks</span> = <span class="string">k1  </span></span><br><span class="line"><span class="comment">  </span></span><br><span class="line"><span class="comment"># 配置 source  </span></span><br><span class="line"><span class="attr">a1.sources.s1.type</span> = <span class="string">netcat  </span></span><br><span class="line"><span class="attr">a1.sources.s1.bind</span> = <span class="string">127.0.0.1  </span></span><br><span class="line"><span class="attr">a1.sources.s1.port</span> = <span class="string">44444  </span></span><br><span class="line"><span class="comment">  </span></span><br><span class="line"><span class="comment"># 配置 channel  </span></span><br><span class="line"><span class="attr">a1.channels.c1.type</span> = <span class="string">memory  </span></span><br><span class="line"><span class="attr">a1.channels.c1.capacity</span> = <span class="string">1000  </span></span><br><span class="line"><span class="attr">a1.channels.c1.transactionCapacity</span> = <span class="string">100  </span></span><br><span class="line"><span class="comment">  </span></span><br><span class="line"><span class="comment"># 配置 sink  </span></span><br><span class="line"><span class="attr">a1.sinks.k1.type</span> = <span class="string">org.apache.flume.sink.kafka.KafkaSink  </span></span><br><span class="line"><span class="attr">a1.sinks.k1.kafka.bootstrap.servers</span> = <span class="string">kafka1:9092,kafka2:9092,kafka3:9092  </span></span><br><span class="line"><span class="attr">a1.sinks.k1.kafka.topic</span> = <span class="string">mytopic  </span></span><br><span class="line"><span class="attr">a1.sinks.k1.flumeBatchSize</span> = <span class="string">20  </span></span><br><span class="line"><span class="attr">a1.sinks.k1.kafka.producer.acks</span> = <span class="string">all  </span></span><br><span class="line"><span class="comment">  </span></span><br><span class="line"><span class="comment"># 绑定 source, channel, 和 sink  </span></span><br><span class="line"><span class="attr">a1.sources.s1.channels</span> = <span class="string">c1  </span></span><br><span class="line"><span class="attr">a1.sinks.k1.channel</span> = <span class="string">c1</span></span><br></pre></td></tr></table></figure><h2 id="配置文件生成"><a href="#配置文件生成" class="headerlink" title="配置文件生成"></a>配置文件生成</h2><ol><li><p><strong>创建配置文件</strong></p><p>将上述配置内容保存为一个文件，例如 <code>flume.conf</code>。文件可以保存在任何目录下，但通常情况下会放在 Flume 的配置目录中。</p></li><li><p><strong>文件路径</strong></p><p>假设您将文件保存为 <code>/opt/flume/conf/flume.conf</code>，请根据实际情况调整路径。</p></li></ol><h2 id="启动-Flume-Agent"><a href="#启动-Flume-Agent" class="headerlink" title="启动 Flume Agent"></a>启动 Flume Agent</h2><p>使用以下命令启动 Flume Agent，并指定配置文件路径：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flume-ng agent --conf /opt/flume/conf --conf-file /opt/flume/conf/flume.conf --name a1</span><br></pre></td></tr></table></figure><ul><li><code>--conf</code> 指定 Flume 的配置目录。</li><li><code>--conf-file</code> 指定 Flume 配置文件的路径。</li><li><code>--name</code> 指定要启动的 Flume agent 的名称（在配置文件中定义的 agent 名称）。</li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> flume </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> flume </tag>
             
         </tags>
       
@@ -398,23 +423,23 @@
     
     
     <entry>
-      <title>maxwell配置</title>
-      <link href="/2024/09/08/maxwell1/"/>
-      <url>/2024/09/08/maxwell1/</url>
+      <title>zookeeper配置</title>
+      <link href="/2024/09/08/zookpeer/"/>
+      <url>/2024/09/08/zookpeer/</url>
       
-        <content type="html"><![CDATA[<h1 id="初始化元数据库"><a href="#初始化元数据库" class="headerlink" title="初始化元数据库"></a>初始化元数据库</h1><h2 id="1-登录到-MySQL"><a href="#1-登录到-MySQL" class="headerlink" title="1. 登录到 MySQL"></a>1. 登录到 MySQL</h2><p>使用以下命令登录到 MySQL 数据库：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p123456</span><br></pre></td></tr></table></figure><h2 id="2-创建元数据库"><a href="#2-创建元数据库" class="headerlink" title="2. 创建元数据库"></a>2. 创建元数据库</h2><p>在 MySQL 提示符下，执行以下命令创建数据库 <code>maxwell</code>：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE maxwell;</span><br></pre></td></tr></table></figure><h2 id="3-创建用户并授予权限"><a href="#3-创建用户并授予权限" class="headerlink" title="3. 创建用户并授予权限"></a>3. 创建用户并授予权限</h2><p>创建一个名为 <code>maxwell</code> 的用户，并设置密码（请将 <code>your_password</code> 替换为实际的密码）：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&#x27;maxwell&#x27;</span>@<span class="string">&#x27;%&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;your_password&#x27;</span>;</span><br></pre></td></tr></table></figure><p>授予用户 <code>maxwell</code> 对 <code>maxwell</code> 数据库的所有权限：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> PRIVILEGES <span class="keyword">ON</span> maxwell.<span class="operator">*</span> <span class="keyword">TO</span> <span class="string">&#x27;maxwell&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure><h2 id="4-授予额外权限"><a href="#4-授予额外权限" class="headerlink" title="4. 授予额外权限"></a>4. 授予额外权限</h2><p>授予 <code>maxwell</code> 用户以下额外权限：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span>, REPLICATION SLAVE, REPLICATION CLIENT <span class="keyword">ON</span> <span class="operator">*</span>.<span class="operator">*</span> <span class="keyword">TO</span> <span class="string">&#x27;maxwell&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br></pre></td></tr></table></figure><h2 id="5-刷新权限"><a href="#5-刷新权限" class="headerlink" title="5. 刷新权限"></a>5. 刷新权限</h2><p>执行以下命令以确保权限更改生效：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure><h2 id="6-具体Maxwell配置"><a href="#6-具体Maxwell配置" class="headerlink" title="6. 具体Maxwell配置"></a>6. 具体Maxwell配置</h2><h3 id="在maxwell安装目录根目录下配置"><a href="#在maxwell安装目录根目录下配置" class="headerlink" title="在maxwell安装目录根目录下配置"></a>在maxwell安装目录根目录下配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim config.properties.example</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<h1 id="Zookeeper-安装与配置"><a href="#Zookeeper-安装与配置" class="headerlink" title="Zookeeper 安装与配置"></a>Zookeeper 安装与配置</h1><h2 id="1-安装-Zookeeper"><a href="#1-安装-Zookeeper" class="headerlink" title="1. 安装 Zookeeper"></a>1. 安装 Zookeeper</h2><h3 id="解压与移动"><a href="#解压与移动" class="headerlink" title="解压与移动"></a>解压与移动</h3><ol><li><p><strong>解压 Zookeeper 软件包</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf /opt/software/apache-zookeeper-3.5.7-bin.tar.gz -C /opt/module</span><br></pre></td></tr></table></figure></li><li><p><strong>移动 Zookeeper 目录</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> /opt/module/apache-zookeeper-3.5.7-bin /opt/module/zookeeper</span><br></pre></td></tr></table></figure></li></ol><h2 id="2-配置环境变量"><a href="#2-配置环境变量" class="headerlink" title="2. 配置环境变量"></a>2. 配置环境变量</h2><ol><li><p><strong>编辑 <code>/etc/profile</code> 文件</strong>，添加 Zookeeper 环境变量：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> ZOOKEEPER_HOME=/opt/module/zookeeper</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$ZOOKEEPER_HOME</span>/bin</span><br></pre></td></tr></table></figure></li><li><p><strong>重新加载配置</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure></li></ol><h2 id="3-配置-Zookeeper"><a href="#3-配置-Zookeeper" class="headerlink" title="3. 配置 Zookeeper"></a>3. 配置 Zookeeper</h2><ol><li><p><strong>复制配置文件</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /opt/module/zookeeper/conf/</span><br><span class="line"><span class="built_in">cp</span> zoo_sample.cfg zoo.cfg</span><br></pre></td></tr></table></figure></li><li><p><strong>编辑 <code>zoo.cfg</code> 文件</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim zoo.cfg</span><br></pre></td></tr></table></figure><p>配置内容如下：</p><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">dataDir</span>=<span class="string">/opt/module/zookeeper/tmp</span></span><br><span class="line"><span class="attr">dataLogDir</span>=<span class="string">/opt/module/zookeeper/log</span></span><br><span class="line"><span class="attr">server.1</span>=<span class="string">master:2888:3888</span></span><br><span class="line"><span class="attr">server.2</span>=<span class="string">slave1:2888:3888</span></span><br><span class="line"><span class="attr">server.3</span>=<span class="string">slave2:2888:3888</span></span><br></pre></td></tr></table></figure></li><li><p><strong>在 Master 节点上进行以下操作</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /opt/module/zookeeper</span><br><span class="line"><span class="built_in">mkdir</span> tmp</span><br><span class="line"><span class="built_in">cd</span> tmp</span><br><span class="line"><span class="built_in">touch</span> myid</span><br><span class="line"><span class="built_in">echo</span> 1 &gt; myid</span><br><span class="line"><span class="built_in">cat</span> myid</span><br></pre></td></tr></table></figure></li><li><p><strong>将 Zookeeper 目录和环境配置文件复制到从节点</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">scp -r /opt/module/zookeeper slave1:/opt/module</span><br><span class="line">scp -r /opt/module/zookeeper slave2:/opt/module</span><br><span class="line">scp /etc/profile slave1:/etc/profile</span><br><span class="line">scp /etc/profile slave2:/etc/profile</span><br></pre></td></tr></table></figure></li></ol><h2 id="4-启动-Zookeeper"><a href="#4-启动-Zookeeper" class="headerlink" title="4. 启动 Zookeeper"></a>4. 启动 Zookeeper</h2><ol><li><p><strong>在 Master 节点上启动 Zookeeper</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /opt/module/zookeeper</span><br><span class="line">zkServer.sh start</span><br></pre></td></tr></table></figure></li><li><p><strong>在 Slave1 和 Slave2 节点上进行以下操作</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /opt/module/zookeeper</span><br><span class="line"><span class="built_in">mkdir</span> tmp</span><br><span class="line"><span class="built_in">cd</span> tmp</span><br><span class="line"><span class="built_in">touch</span> myid</span><br><span class="line"><span class="built_in">echo</span> 2 &gt; myid   <span class="comment"># 对于 Slave1，使用 2；对于 Slave2，使用 3</span></span><br><span class="line"><span class="built_in">cat</span> myid</span><br></pre></td></tr></table></figure><p>启动 Zookeeper：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zkServer.sh start</span><br></pre></td></tr></table></figure></li></ol><h2 id="5-检查-Zookeeper-状态"><a href="#5-检查-Zookeeper-状态" class="headerlink" title="5. 检查 Zookeeper 状态"></a>5. 检查 Zookeeper 状态</h2><ol><li><p><strong>检查 Zookeeper 状态</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zkServer.sh status</span><br></pre></td></tr></table></figure></li><li><p><strong>如果状态显示不正确</strong>：</p><ul><li><p>检查端口占用：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -lnp | grep 8080</span><br></pre></td></tr></table></figure></li><li><p>删除 <code>java</code> 前面数字的序号（表示占用端口的进程）：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">kill</span> -9 &lt;pid&gt;   <span class="comment"># 其中 &lt;pid&gt; 是您在 netstat 输出中找到的进程 ID</span></span><br></pre></td></tr></table></figure></li><li><p>重新启动 Zookeeper：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zkServer.sh start</span><br></pre></td></tr></table></figure></li><li><p>再次检查状态：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zkServer.sh status</span><br></pre></td></tr></table></figure></li></ul></li></ol><h2 id="6-防火墙配置"><a href="#6-防火墙配置" class="headerlink" title="6. 防火墙配置"></a>6. 防火墙配置</h2><p>确保在所有节点上关闭防火墙，以避免网络通信问题：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl stop firewalld</span><br><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">disable</span> firewalld</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
           
-          <category> maxwell </category>
+          <category> zookeeper </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Maxwell </tag>
+            <tag> zookeeper </tag>
             
         </tags>
       
@@ -440,31 +465,6 @@
         <tags>
             
             <tag> redis </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>zookeeper配置</title>
-      <link href="/2024/09/08/zookpeer/"/>
-      <url>/2024/09/08/zookpeer/</url>
-      
-        <content type="html"><![CDATA[<h1 id="Zookeeper-安装与配置"><a href="#Zookeeper-安装与配置" class="headerlink" title="Zookeeper 安装与配置"></a>Zookeeper 安装与配置</h1><h2 id="1-安装-Zookeeper"><a href="#1-安装-Zookeeper" class="headerlink" title="1. 安装 Zookeeper"></a>1. 安装 Zookeeper</h2><h3 id="解压与移动"><a href="#解压与移动" class="headerlink" title="解压与移动"></a>解压与移动</h3><ol><li><p><strong>解压 Zookeeper 软件包</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf /opt/software/apache-zookeeper-3.5.7-bin.tar.gz -C /opt/module</span><br></pre></td></tr></table></figure></li><li><p><strong>移动 Zookeeper 目录</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> /opt/module/apache-zookeeper-3.5.7-bin /opt/module/zookeeper</span><br></pre></td></tr></table></figure></li></ol><h2 id="2-配置环境变量"><a href="#2-配置环境变量" class="headerlink" title="2. 配置环境变量"></a>2. 配置环境变量</h2><ol><li><p><strong>编辑 <code>/etc/profile</code> 文件</strong>，添加 Zookeeper 环境变量：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> ZOOKEEPER_HOME=/opt/module/zookeeper</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$ZOOKEEPER_HOME</span>/bin</span><br></pre></td></tr></table></figure></li><li><p><strong>重新加载配置</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure></li></ol><h2 id="3-配置-Zookeeper"><a href="#3-配置-Zookeeper" class="headerlink" title="3. 配置 Zookeeper"></a>3. 配置 Zookeeper</h2><ol><li><p><strong>复制配置文件</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /opt/module/zookeeper/conf/</span><br><span class="line"><span class="built_in">cp</span> zoo_sample.cfg zoo.cfg</span><br></pre></td></tr></table></figure></li><li><p><strong>编辑 <code>zoo.cfg</code> 文件</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim zoo.cfg</span><br></pre></td></tr></table></figure><p>配置内容如下：</p><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">dataDir</span>=<span class="string">/opt/module/zookeeper/tmp</span></span><br><span class="line"><span class="attr">dataLogDir</span>=<span class="string">/opt/module/zookeeper/log</span></span><br><span class="line"><span class="attr">server.1</span>=<span class="string">master:2888:3888</span></span><br><span class="line"><span class="attr">server.2</span>=<span class="string">slave1:2888:3888</span></span><br><span class="line"><span class="attr">server.3</span>=<span class="string">slave2:2888:3888</span></span><br></pre></td></tr></table></figure></li><li><p><strong>在 Master 节点上进行以下操作</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /opt/module/zookeeper</span><br><span class="line"><span class="built_in">mkdir</span> tmp</span><br><span class="line"><span class="built_in">cd</span> tmp</span><br><span class="line"><span class="built_in">touch</span> myid</span><br><span class="line"><span class="built_in">echo</span> 1 &gt; myid</span><br><span class="line"><span class="built_in">cat</span> myid</span><br></pre></td></tr></table></figure></li><li><p><strong>将 Zookeeper 目录和环境配置文件复制到从节点</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">scp -r /opt/module/zookeeper slave1:/opt/module</span><br><span class="line">scp -r /opt/module/zookeeper slave2:/opt/module</span><br><span class="line">scp /etc/profile slave1:/etc/profile</span><br><span class="line">scp /etc/profile slave2:/etc/profile</span><br></pre></td></tr></table></figure></li></ol><h2 id="4-启动-Zookeeper"><a href="#4-启动-Zookeeper" class="headerlink" title="4. 启动 Zookeeper"></a>4. 启动 Zookeeper</h2><ol><li><p><strong>在 Master 节点上启动 Zookeeper</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /opt/module/zookeeper</span><br><span class="line">zkServer.sh start</span><br></pre></td></tr></table></figure></li><li><p><strong>在 Slave1 和 Slave2 节点上进行以下操作</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /opt/module/zookeeper</span><br><span class="line"><span class="built_in">mkdir</span> tmp</span><br><span class="line"><span class="built_in">cd</span> tmp</span><br><span class="line"><span class="built_in">touch</span> myid</span><br><span class="line"><span class="built_in">echo</span> 2 &gt; myid   <span class="comment"># 对于 Slave1，使用 2；对于 Slave2，使用 3</span></span><br><span class="line"><span class="built_in">cat</span> myid</span><br></pre></td></tr></table></figure><p>启动 Zookeeper：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zkServer.sh start</span><br></pre></td></tr></table></figure></li></ol><h2 id="5-检查-Zookeeper-状态"><a href="#5-检查-Zookeeper-状态" class="headerlink" title="5. 检查 Zookeeper 状态"></a>5. 检查 Zookeeper 状态</h2><ol><li><p><strong>检查 Zookeeper 状态</strong>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zkServer.sh status</span><br></pre></td></tr></table></figure></li><li><p><strong>如果状态显示不正确</strong>：</p><ul><li><p>检查端口占用：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -lnp | grep 8080</span><br></pre></td></tr></table></figure></li><li><p>删除 <code>java</code> 前面数字的序号（表示占用端口的进程）：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">kill</span> -9 &lt;pid&gt;   <span class="comment"># 其中 &lt;pid&gt; 是您在 netstat 输出中找到的进程 ID</span></span><br></pre></td></tr></table></figure></li><li><p>重新启动 Zookeeper：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zkServer.sh start</span><br></pre></td></tr></table></figure></li><li><p>再次检查状态：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zkServer.sh status</span><br></pre></td></tr></table></figure></li></ul></li></ol><h2 id="6-防火墙配置"><a href="#6-防火墙配置" class="headerlink" title="6. 防火墙配置"></a>6. 防火墙配置</h2><p>确保在所有节点上关闭防火墙，以避免网络通信问题：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl stop firewalld</span><br><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">disable</span> firewalld</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> zookeeper </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> zookeeper </tag>
             
         </tags>
       
@@ -586,25 +586,6 @@
     
     
     <entry>
-      <title>Office2016专业版</title>
-      <link href="/2024/08/23/office/"/>
-      <url>/2024/08/23/office/</url>
-      
-        <content type="html"><![CDATA[<h1 id="《office2016专业版安装包-exe》"><a href="#《office2016专业版安装包-exe》" class="headerlink" title="《office2016专业版安装包.exe》"></a>《office2016专业版安装包.exe》</h1><h3 id="office下载地址"><a href="#office下载地址" class="headerlink" title="office下载地址"></a><a href="https://www.alipan.com/s/p3Lmm2nytpy">office下载地址</a></h3><h3 id="office激活文章"><a href="#office激活文章" class="headerlink" title="office激活文章"></a><a href="https://geyueshi.com/2024/08/23/win%E6%BF%80%E6%B4%BB/">office激活文章</a></h3>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> 应用程序 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>系统优化</title>
       <link href="/2024/08/23/youhua/"/>
       <url>/2024/08/23/youhua/</url>
@@ -629,6 +610,25 @@
       <url>/2024/08/23/yuancheng/</url>
       
         <content type="html"><![CDATA[<h1 id="Todesk远程工具"><a href="#Todesk远程工具" class="headerlink" title="Todesk远程工具"></a>Todesk远程工具</h1><h3 id="点击下载"><a href="#点击下载" class="headerlink" title="点击下载"></a><a href="https://dl.todesk.com/windows/ToDesk_Setup.exe">点击下载</a></h3>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 应用程序 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Office2016专业版</title>
+      <link href="/2024/08/23/office/"/>
+      <url>/2024/08/23/office/</url>
+      
+        <content type="html"><![CDATA[<h1 id="《office2016专业版安装包-exe》"><a href="#《office2016专业版安装包-exe》" class="headerlink" title="《office2016专业版安装包.exe》"></a>《office2016专业版安装包.exe》</h1><h3 id="office下载地址"><a href="#office下载地址" class="headerlink" title="office下载地址"></a><a href="https://www.alipan.com/s/p3Lmm2nytpy">office下载地址</a></h3><h3 id="office激活文章"><a href="#office激活文章" class="headerlink" title="office激活文章"></a><a href="https://geyueshi.com/2024/08/23/win%E6%BF%80%E6%B4%BB/">office激活文章</a></h3>]]></content>
       
       
       
@@ -687,9 +687,9 @@
     
     
     <entry>
-      <title>电影</title>
-      <link href="/movies/index.html"/>
-      <url>/movies/index.html</url>
+      <title>链接</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -720,9 +720,9 @@
     
     
     <entry>
-      <title>categories</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>电影</title>
+      <link href="/movies/index.html"/>
+      <url>/movies/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -731,9 +731,9 @@
     
     
     <entry>
-      <title>链接</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
