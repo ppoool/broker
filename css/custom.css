@@ -1,0 +1,116 @@
+/* source/css/custom.css */
+
+#search-box {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    padding: 20px 0; /* 上下内边距 */
+  }
+  
+  #search-box form {
+    display: flex;
+    width: 75%; /* 占页面宽度的四分之三 */
+    max-width: 800px; /* 可选：限制最大宽度 */
+  }
+  
+  #search-box input[type="text"] {
+    flex: 1; /* 占满父元素宽度 */
+    padding: 10px;
+    border: 1px solid #ff6565;
+    border-radius: 50px; /* 圆角效果 */
+    background-color: transparent; /* 背景透明 */
+    font-size: 16px;
+  }
+  
+  #search-box button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 50px; /* 圆角效果 */
+    background-color: #007bff; /* 背景颜色 */
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center; /* 垂直居中 */
+  }
+  
+  #search-box button i {
+    margin-right: 5px; /* 图标与文本之间的间距 */
+  }
+  
+/* 加密文章样式 */
+#hexo-blog-encrypt {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+#hexo-blog-encrypt h3 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#hexo-blog-encrypt input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#hexo-blog-encrypt button {
+    width: 100%;
+    padding: 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#hexo-blog-encrypt button:hover {
+    background-color: #2980b9;
+}
+
+.hbe-input-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.hbe-input-container label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #999;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.hbe-input-container input:focus + label,
+.hbe-input-container input:not(:placeholder-shown) + label {
+    top: -20px;
+    left: 0;
+    font-size: 12px;
+    color: #3498db;
+}
+
+.hbe-input-container .bottom-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #3498db;
+    transition: all 0.3s ease;
+}
+
+.hbe-input-container input:focus ~ .bottom-line {
+    width: 100%;
+}
+
